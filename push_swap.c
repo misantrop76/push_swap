@@ -16,78 +16,106 @@ int		my_atoi(char *str)
 	return (ft_atoi(str));
 }
 
-void	print_list(t_list *pile1, t_list *pile2)
-{
-	t_list *tmp1;
-	t_list *tmp2;
-
-	tmp1 = pile1;
-	tmp2 = pile2;
-	printf("Pile1		Pile2\n");
-	while(tmp1 || tmp2)
-	{
-		if (tmp1 && tmp2)
-			printf("%d		%d\n", tmp1->content, tmp2->content);
-		else if (tmp1)
-			printf("%d\n", tmp1->content);
-		else if (tmp2)
-			printf("		%d\n", tmp2->content);
-		if (tmp1)
-			tmp1 = tmp1->next;
-		if (tmp2)
-			tmp2 = tmp2->next;
-	}
-}
-
-int		check_error_parse(char **av, t_list **pile1, int n)
+int		check_error_parse(char **av, t_swap *swap, int n)
 {
 	int i;
 
 	i = 0;
 	while (i < n)
 	{
-		ft_lstadd_back(pile1, ft_lstnew(my_atoi(av[i + 1])));
+		swap->pile1[i] = my_atoi(av[i + 1]);
 		i++;
 	}
 	return (1);
 }
 
-int	get_min(t_list *lst)
+void	print_list(t_swap swap)
+{
+	int a = 0;
+
+	write(1, "Pile A		Pile B\n", 15);
+	//printf("taille %d\n", swap.taille1);
+	while(a < swap.taille1 || a < swap.taille2 )
+	{
+		if (a < swap.taille1 && a < swap.taille2)
+			printf("%d		%d\n", swap.pile1[a], swap.pile2[a]);
+		else if(a < swap.taille1)
+			printf("%d\n", swap.pile1[a]);
+		else if(a < swap.taille2)
+			printf("		%d\n", swap.pile2[a]);
+		a++;
+	}
+}
+
+int	get_max(int *pile, int len)
 {
 	int i;
-	t_list *tmp;
+	int max;
 
-	tmp = lst;
-	i = lst->content;
-	while (tmp)
+	i = 0;
+	max = pile[0];
+	while(i < len)
 	{
-		if (tmp->content < i)
-			i = tmp->content;
-		tmp = tmp->next;
+		if (pile[i] > max)
+			max = pile[i];
+		i++;
 	}
-	return (i);
+	return (max);
 }
+
+int	get_min(int *pile, int len)
+{
+	int i;
+	int min;
+
+	i = 0;
+	min = pile[0];
+	while(i < len)
+	{
+		if (pile[i] < min)
+			min = pile[i];
+		i++;
+	}
+	return (min);
+}
+
+int		is_sorted(int *pile, int len)
+{
+	int i;
+
+	i = 0;
+	while (i < len - 1)
+	{
+		if (pile[i] > pile[i + 1])
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
 int main(int ac, char **av)
 {
 	t_swap swap;
-	t_list *pile1;
-	t_list *pile2;
-	t_list *tmp;
-	int i;
 
+	swap.i = 0;
 	if (ac < 2)
 		return (write(1, "Error\n", 7));
-	swap.n = ac - 1;
-	if (!(check_error_parse(av, &pile1, swap.n)))
+	swap.taille2 = 0;
+	swap.taille1 = ac - 1;
+	swap.pile1 = malloc(sizeof(int) * swap.taille1);
+	if (!(check_error_parse(av, &swap, swap.taille1)))
 		return(write(1, "Error\n", 6));
-	while (pile1)
+	if (is_sorted(swap.pile1, swap.taille1))
 	{
-		i = get_min(pile1);
-		while (pile1->content != i)
-			get_up(&pile1, 0);
-		insert(&pile1, &pile2, 0);
+		printf("score = %d\n", swap.i);
+		exit(EXIT_SUCCESS);
 	}
-	while (pile2)
-		insert(&pile2, &pile1, 1);
-	print_list(pile1, pile2);
+	if (swap.taille1 <= 3)
+		sort_three(&swap, swap.pile1, swap.taille1, 1);
+	else if (swap.taille1 <= 5)
+		sort_five(&swap);
+	else
+		sort_default(&swap);
+	print_list(swap);
+	printf("score = %d\n", swap.i);
 }

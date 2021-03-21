@@ -8,7 +8,8 @@ INCLUDES = -Werror -Wextra -Wall
 HEADERS = push_swap.h
 
 SRC = 	push_swap.c\
-		utils.c
+		utils.c\
+		sort.c
 
 OBJ = $(patsubst %.c, obj/%.o, $(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:08:56 by mminet            #+#    #+#             */
-/*   Updated: 2021/03/18 13:18:23 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/21 18:15:22 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,24 @@
 
 typedef struct s_swap
 {
-	int n;
+	int i;
+	int *pile1;
+	int *pile2;
+	int taille1;
+	int taille2;
 }				t_swap;
 
-void	switch_first(t_list *lst, int a);
-void	insert(t_list **src, t_list **dest, int a);
-void	print_list(t_list *pile1, t_list *pile2);
-void	get_up(t_list **lst, int a);
-void	get_down(t_list **lst, int a);
+int		is_sorted(int *pile, int len);
+void	switch_first(t_swap *swap, int a);
+void	insert_pb(t_swap *swap);
+void	insert_pa(t_swap *swap);
+void	print_list(t_swap swap);
+void	get_up(int *pile, int len, int j, int *a);
+void	get_down(int *pile, int len, int j, int *a);
+int		get_min(int *pile, int len);
+int		get_max(int *pile, int len);
+void	sort_three(t_swap *swap, int *pile, int len, int i);
+void	sort_five(t_swap *swap);
+void	sort_default(t_swap *swap);
 
 #endif
