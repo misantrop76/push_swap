@@ -6,7 +6,7 @@
 /*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:08:56 by mminet            #+#    #+#             */
-/*   Updated: 2021/03/21 18:15:22 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/23 18:10:14 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,7 @@ int		get_max(int *pile, int len);
 void	sort_three(t_swap *swap, int *pile, int len, int i);
 void	sort_five(t_swap *swap);
 void	sort_default(t_swap *swap);
+int		get_next_line(char **line);
+void	sort_all(t_swap *swap, int deg);
 
 #endif

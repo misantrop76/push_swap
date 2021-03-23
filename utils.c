@@ -17,7 +17,7 @@ void	switch_first(t_swap *swap, int a)
 	{
 		if (swap->taille2 <= 1)
 			return;
-		write(1, "sa\n", 3);
+		write(1, "sb\n", 3);
 		tmp = swap->pile2[0];
 		swap->pile2[0] = swap->pile2[1];
 		swap->pile2[1] = tmp;
@@ -81,7 +81,7 @@ void	insert_pa(t_swap *swap)
 	//	free(tmp1);
 	//if (tmp2)
 	//	free(tmp2);
-	write(1, "pb\n", 3);
+	write(1, "pa\n", 3);
 }
 
 void	insert_pb(t_swap *swap)

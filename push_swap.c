@@ -10,7 +10,7 @@ int		my_atoi(char *str)
 	while (str[i])
 	{
 		if (str[i] < '0' || str[i] > '9')
-			exit(0);
+			exit(write(1, "Error\n", 6));
 		i++;
 	}
 	return (ft_atoi(str));
@@ -98,12 +98,12 @@ int main(int ac, char **av)
 	t_swap swap;
 
 	swap.i = 0;
-	if (ac < 2)
-		return (write(1, "Error\n", 7));
 	swap.taille2 = 0;
 	swap.taille1 = ac - 1;
 	swap.pile1 = malloc(sizeof(int) * swap.taille1);
 	if (!(check_error_parse(av, &swap, swap.taille1)))
+		return(write(1, "Error\n", 6));
+	if (swap.taille1 == 0)
 		return(write(1, "Error\n", 6));
 	if (is_sorted(swap.pile1, swap.taille1))
 	{
@@ -114,8 +114,11 @@ int main(int ac, char **av)
 		sort_three(&swap, swap.pile1, swap.taille1, 1);
 	else if (swap.taille1 <= 5)
 		sort_five(&swap);
-	else
+	else if(swap.taille1 < 50)
 		sort_default(&swap);
-	print_list(swap);
-	printf("score = %d\n", swap.i);
+	else if (swap.taille1 < 200)
+		sort_all(&swap, 9);
+	else
+		sort_all(&swap, 11);
+	//printf("score = %d\n", swap.i);
 }
