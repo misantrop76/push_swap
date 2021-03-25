@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcut.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mminet <mminet@student.le-101.fr>          +#+  +:+       +#+        */
+/*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/28 15:50:00 by mminet            #+#    #+#             */
-/*   Updated: 2020/03/05 18:25:18 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 16:55:27 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ char	*ft_strcut(char *str)
 	char	*s;
 
 	i = 0;
-	if (!(s = malloc(sizeof(char) * ft_strlen(str) + 1)))
-		return (0);
+	s = malloc(sizeof(char) * ft_strlen(str) + 1);
 	s[ft_strlen(str)] = '\0';
 	while (str[i])
 	{

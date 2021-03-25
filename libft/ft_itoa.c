@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mminet <mminet@student.le-101.fr>          +#+  +:+       +#+        */
+/*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:31:24 by mminet            #+#    #+#             */
-/*   Updated: 2020/02/28 16:04:33 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 16:46:28 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static char	*ft_strrev(char *str)
 
 static int	size(long int nbr)
 {
-	int j;
+	int	j;
 
 	j = 0;
 	if (nbr == 0)
@@ -51,7 +51,7 @@ static int	size(long int nbr)
 
 static char	*mkchr(char *str, long int nbr, int signe)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (nbr == 0)
@@ -68,7 +68,7 @@ static char	*mkchr(char *str, long int nbr, int signe)
 	return (ft_strrev(str));
 }
 
-char		*ft_itoa(int c)
+char	*ft_itoa(int c)
 {
 	char		*str;
 	int			signe;
@@ -81,7 +81,6 @@ char		*ft_itoa(int c)
 		signe++;
 		nbr *= -1;
 	}
-	if (!(str = malloc(sizeof(char) * (size(nbr) + 1 + signe))))
-		return (0);
+	str = malloc(sizeof(char) * (size(nbr) + 1 + signe));
 	return (mkchr(str, nbr, signe));
 }

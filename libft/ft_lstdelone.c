@@ -1,7 +1,7 @@
 #include "libft.h"
 #include <stdio.h>
 
-void		ft_lstdelone(t_list **lst)
+void	ft_lstdelone(t_list **lst)
 {
 	t_list	*tmp;
 
@@ -9,5 +9,4 @@ void		ft_lstdelone(t_list **lst)
 	*lst = (*lst)->next;
 	free(tmp);
 	tmp = NULL;
-
 }

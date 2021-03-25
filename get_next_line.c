@@ -6,7 +6,7 @@
 /*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/06 16:12:29 by mminet            #+#    #+#             */
-/*   Updated: 2021/03/22 14:14:05 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 15:32:08 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,19 +26,17 @@ char	*ft_strnew(size_t size)
 {
 	char	*s;
 
-	if (!(s = malloc(sizeof(char) * (size + 1))))
-		return (NULL);
+	s = malloc(sizeof(char) * (size + 1));
 	*s = '\0';
 	return (s);
 }
 
 char	*ft_get_line(int *ret, char *rest)
 {
-	char *buffer;
-	char *rest2;
+	char	*buffer;
+	char	*rest2;
 
-	if (!(buffer = malloc(sizeof(char) * 11)))
-		return (0);
+	buffer = malloc(sizeof(char) * 11);
 	*ret = read(0, buffer, 10);
 	buffer[*ret] = '\0';
 	rest2 = rest;
@@ -48,7 +46,7 @@ char	*ft_get_line(int *ret, char *rest)
 	return (rest);
 }
 
-int		get_next_line(char **line)
+int	get_next_line(char **line)
 {
 	static char	*rest = NULL;
 	char		*line2;
@@ -56,11 +54,12 @@ int		get_next_line(char **line)
 	int			ret;
 
 	ret = 1;
-	if (!line ||(rest == NULL && (!(rest = ft_strnew(0)))))
-		return (-1);
+	if (!rest)
+		rest = ft_strnew(0);
 	while (ret)
 	{
-		if ((str = ft_strchr(rest, '\n')) && str != 0)
+		str = ft_strchr(rest, '\n');
+		if (str != 0)
 		{
 			*str = '\0';
 			*line = ft_strdup(rest);

@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mminet <mminet@student.le-101.fr>          +#+  +:+       +#+        */
+/*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/14 11:37:04 by mminet            #+#    #+#             */
-/*   Updated: 2020/02/28 16:06:57 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/25 16:59:05 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char		*mkchr(char *s2, const char *s1, int b, int e)
+static char	*mkchr(char *s2, const char *s1, int b, int e)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (b != (e + 1))
@@ -23,9 +23,9 @@ static char		*mkchr(char *s2, const char *s1, int b, int e)
 	return (s2);
 }
 
-static int		ft_cmp(char c, const char *set)
+static int	ft_cmp(char c, const char *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (set[i] != '\0')
@@ -37,9 +37,9 @@ static int		ft_cmp(char c, const char *set)
 	return (0);
 }
 
-static int		begin(const char *s1, const char *set)
+static int	begin(const char *s1, const char *set)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (s1[i] != '\0')
@@ -51,9 +51,9 @@ static int		begin(const char *s1, const char *set)
 	return (i);
 }
 
-static int		end(const char *s1, const char *set)
+static int	end(const char *s1, const char *set)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(s1);
 	i--;
@@ -66,7 +66,7 @@ static int		end(const char *s1, const char *set)
 	return (i);
 }
 
-char			*ft_strtrim(const char *s1, const char *set)
+char	*ft_strtrim(const char *s1, const char *set)
 {
 	char	*s2;
 	int		b;
@@ -79,10 +79,7 @@ char			*ft_strtrim(const char *s1, const char *set)
 	b = begin(s1, set);
 	e = end(s1, set);
 	if ((e + 1) - b > 0)
-	{
-		if (!(s2 = malloc(sizeof(char) * ((e + 1) - b + 1))))
-			return (0);
-	}
+		s2 = malloc(sizeof(char) * ((e + 1) - b + 1));
 	else
 	{
 		s2 = ft_calloc(1, 1);
