@@ -1,4 +1,6 @@
 
+$(VERBOSE).SILENT:
+
 NAME =	push_swap\
 		checker\
 
@@ -28,12 +30,18 @@ all: $(NAME)
 $(OBJ): ${HEADERS}
 
 $(NAME): $(LIBFT) $(OBJ_PUSH_SWAP) $(OBJ_CHECKER)
+	@echo "\n==> Making Push_Swap"
 	$(FLAGS) $(INCLUDES) $(OBJ_PUSH_SWAP) $(LIBFT) -o push_swap
+	@echo "\nPush_Swap Done !"
+	@echo "\n==> Making Checker"
 	$(FLAGS) $(INCLUDES) $(OBJ_CHECKER) $(LIBFT) -o checker
+	@echo "\nChecker Done !"
+
 
 $(LIBFT):
 	@echo "\n==> Making LIBFT"
 	make bonus -C ./libft
+	@echo "\nLibft Done !"
 
 obj/%.o: %.c
 	mkdir -p obj

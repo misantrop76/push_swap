@@ -6,7 +6,7 @@
 /*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/16 17:52:48 by mminet            #+#    #+#             */
-/*   Updated: 2021/03/18 11:08:38 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 14:55:27 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@
 # include <string.h>
 # include <stdlib.h>
 
-typedef struct	s_list
+typedef struct s_list
 {
-	int			content;
+	int				content;
 	struct s_list	*next;
 }				t_list;
 
@@ -61,8 +61,7 @@ void			ft_lstadd_front(t_list **alst, t_list *new);
 int				ft_lstsize(t_list *lst);
 t_list			*ft_lstlast(t_list *lst);
 void			ft_lstadd_back(t_list **alst, t_list *new);
-void		ft_lstdelone(t_list **lst);
+void			ft_lstdelone(t_list **lst);
 char			*ft_strcut(char *str);
-
 
 #endif

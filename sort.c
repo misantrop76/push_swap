@@ -9,8 +9,8 @@ void	ft_free(t_swap *swap, int i)
 	swap->pile1 = NULL;
 	swap->pile2 = NULL;
 	if (i)
-		write(1, "Error\n", 5);
-	exit(EXIT_SUCCESS);
+		write(1, "Error\n", 6);
+	exit(EXIT_FAILURE);
 }
 
 void	sort_three(t_swap *swap, int *pile, int len, int i)

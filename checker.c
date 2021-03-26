@@ -10,7 +10,7 @@ int	check_error_parse(char **av, t_swap *swap, int n)
 		swap->pile1[i] = my_atoi(av[i + 1]);
 		i++;
 	}
-	return (1);
+	return (check_double(swap));
 }
 
 int	is_sorted(int *pile, int len)

@@ -9,7 +9,7 @@ void	ft_free(t_swap *swap, int i)
 	swap->pile1 = NULL;
 	swap->pile2 = NULL;
 	if (i)
-		write(1, "Error\n", 5);
+		write(1, "Error\n", 6);
 	exit(EXIT_SUCCESS);
 }
 

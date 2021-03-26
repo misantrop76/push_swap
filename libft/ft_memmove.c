@@ -6,7 +6,7 @@
 /*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/09 21:43:59 by mminet            #+#    #+#             */
-/*   Updated: 2021/03/25 16:51:07 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 13:20:08 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 	unsigned char		*d;
 	const unsigned char	*s;
 
-	d = (unsigned char*)dest;
-	s = (unsigned char*)src;
+	d = (unsigned char *)dest;
+	s = (unsigned char *)src;
 	i = 0;
 	if (dest == 0 && src == 0)
 		return (0);

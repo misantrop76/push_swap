@@ -6,7 +6,7 @@
 /*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/18 21:08:56 by mminet            #+#    #+#             */
-/*   Updated: 2021/03/25 16:14:33 by mminet           ###   ########lyon.fr   */
+/*   Updated: 2021/03/26 14:49:33 by mminet           ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,15 @@
 
 # include <unistd.h>
 # include <stdlib.h>
-#include <stdio.h>
+# include <stdio.h>
 # include "libft/libft.h"
 
 typedef struct s_swap
 {
-	int i;
-	int *pile1;
-	int *pile2;
-	int taille1;
-	int taille2;
+	int	*pile1;
+	int	*pile2;
+	int	taille1;
+	int	taille2;
 }				t_swap;
 
 int		is_sorted(int *pile, int len);
@@ -42,6 +41,7 @@ int		get_next_line(char **line);
 void	sort_all(t_swap *swap, int deg);
 int		is_int(char *str);
 int		my_atoi(char *str);
+int		check_double(t_swap *swap);
 void	ft_free(t_swap *swap, int i);
 
 #endif
