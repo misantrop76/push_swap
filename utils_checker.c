@@ -1,26 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_checker.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/30 13:37:08 by mminet            #+#    #+#             */
+/*   Updated: 2021/03/30 17:33:46 by mminet           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-int	check_double(t_swap *swap)
-{
-	int	i;
-	int	val;
-	int	a;
-
-	i = 0;
-	while (i < swap->taille1)
-	{
-		val = swap->pile1[i];
-		a = 0;
-		while (a < swap->taille1)
-		{
-			if (swap->pile1[a] == val && a != i)
-				return (0);
-			a++;
-		}
-		i++;
-	}
-	return (1);
-}
 
 void	switch_first(t_swap *swap, int a)
 {

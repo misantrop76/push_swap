@@ -15,11 +15,13 @@ SRC_PUSH_SWAP =		push_swap.c\
 					utils2.c\
 					sort.c\
 					sort_all.c\
+					parse.c\
 
 SRC_CHECKER =	checker.c\
 				get_next_line.c\
 				utils_checker.c\
 				utils_checker2.c\
+				parse.c\
 
 OBJ_PUSH_SWAP = $(patsubst %.c, obj/%.o, $(SRC_PUSH_SWAP))
 

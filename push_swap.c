@@ -1,39 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/30 13:36:39 by mminet            #+#    #+#             */
+/*   Updated: 2021/03/30 17:14:16 by mminet           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
-
-int	check_double(t_swap *swap)
-{
-	int	i;
-	int	val;
-	int	a;
-
-	i = 0;
-	while (i < swap->taille1)
-	{
-		val = swap->pile1[i];
-		a = 0;
-		while (a < swap->taille1)
-		{
-			if (swap->pile1[a] == val && a != i)
-				return (0);
-			a++;
-		}
-		i++;
-	}
-	return (1);
-}
-
-int	check_error_parse(char **av, t_swap *swap, int n)
-{
-	int	i;
-
-	i = 0;
-	while (i < n)
-	{
-		swap->pile1[i] = my_atoi(av[i + 1]);
-		i++;
-	}
-	return (check_double(swap));
-}
 
 int	get_min(int *pile, int len)
 {
@@ -70,11 +47,11 @@ int	main(int ac, char **av)
 	t_swap	swap;
 
 	swap.taille2 = 0;
-	swap.taille1 = ac - 1;
+	swap.taille1 = 0;
+	swap.op = 0;
 	if (!(ac - 1))
 		return (0);
-	swap.pile1 = malloc(sizeof(int) * swap.taille1);
-	if (!(check_error_parse(av, &swap, swap.taille1)))
+	if (!(check_error_parse(av, &swap)))
 		ft_free(&swap, 1);
 	if (swap.taille1 == 0)
 		ft_free(&swap, 1);

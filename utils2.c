@@ -1,4 +1,44 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils2.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mminet <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/30 13:37:04 by mminet            #+#    #+#             */
+/*   Updated: 2021/03/30 13:37:07 by mminet           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
+
+int	is_int(char *str)
+{
+	long int	value;
+	int			sign;
+
+	value = 0;
+	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
+		|| *str == '\r' || *str == '\v')
+		str++;
+	if (*str == '-')
+		sign = -1;
+	else
+		sign = 1;
+	if (*str == '-' || *str == '+')
+		str++;
+	while (*str)
+	{
+		if (!ft_isdigit(*str))
+			return (0);
+		value = value * 10 + (*str - '0');
+		str++;
+	}
+	if ((value * sign) <= 2147483647 && (value * sign) >= -2147483648)
+		return (1);
+	else
+		return (0);
+}
 
 void	get_down(int *pile, int len, int j)
 {
@@ -41,52 +81,6 @@ void	get_up(int *pile, int len, int j)
 		write(1, "ra\n", 3);
 	else
 		write(1, "rb\n", 3);
-}
-
-int	is_int(char *str)
-{
-	long int	value;
-	int			sign;
-
-	value = 0;
-	while (*str == ' ' || *str == '\t' || *str == '\n' || *str == '\f'
-		|| *str == '\r' || *str == '\v')
-		str++;
-	if (*str == '-')
-		sign = -1;
-	else
-		sign = 1;
-	if (*str == '-' || *str == '+')
-		str++;
-	while (*str)
-	{
-		if (!ft_isdigit(*str))
-			return (0);
-		value = value * 10 + (*str - '0');
-		str++;
-	}
-	if ((value * sign) <= 2147483647 && (value * sign) >= -2147483648)
-		return (1);
-	else
-		return (0);
-}
-
-int	my_atoi(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			exit(write(1, "Error\n", 6));
-		i++;
-	}
-	if (!is_int(str))
-		exit(write(1, "Error\n", 6));
-	return (ft_atoi(str));
 }
 
 int	get_max(int *pile, int len)

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   utils_checker2.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mminet <mminet@student.42lyon.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/03/30 13:37:13 by mminet            #+#    #+#             */
+/*   Updated: 2021/03/30 17:42:08 by mminet           ###   ########lyon.fr   */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 void	ft_free(t_swap *swap, int i)
@@ -76,22 +88,4 @@ int	is_int(char *str)
 		return (1);
 	else
 		return (0);
-}
-
-int	my_atoi(char *str)
-{
-	int	i;
-
-	i = 0;
-	if (str[i] == '-')
-		i++;
-	while (str[i])
-	{
-		if (str[i] < '0' || str[i] > '9')
-			exit(write(1, "Error\n", 6));
-		i++;
-	}
-	if (!is_int(str))
-		exit(write(1, "Error\n", 6));
-	return (ft_atoi(str));
 }
